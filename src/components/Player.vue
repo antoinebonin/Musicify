@@ -120,8 +120,21 @@ export default {
             this.audio.pause();
             this.isLoaded = false;
             // Change le track
-            console.log(index);
             await this.loadTrack(index)
+            this.isLoaded = true;
+            // Lance la musique
+            this.play = true;
+            this.audio.play();
+        },
+        async changeTrack(index) {
+            // TODO : FIx ressource missing error
+            let id = this.pendingList.indexOf(index);
+            // Stop la musique
+            this.play = false;
+            this.audio.pause();
+            this.isLoaded = false;
+            // Change le track
+            await this.loadTrack(id)
             this.isLoaded = true;
             // Lance la musique
             this.play = true;
@@ -131,7 +144,9 @@ export default {
             this.currentTime = Math.floor(this.audio.currentTime);
         },
         setPosition(number) {
+            this.audio.pause();
             this.audio.currentTime = number;
+            this.audio.play();
         }
     },
     computed: {
@@ -139,14 +154,14 @@ export default {
             return this.$store.state.change;
         },
         pendingList () {
-            return this.$store.state.pending
+            return this.$store.state.pending;
         }
     },
     watch: {
         change: {
             deep: true,
             handler: function(id) {
-                this.selectTrack(id);
+                this.changeTrack(id);
             }
         }
     },

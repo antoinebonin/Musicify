@@ -43,7 +43,7 @@
 
         <v-btn value="pendingList" @click="navigate('pending')">
           <span>Liste de lecture</span>
-          <v-icon>mdi-music</v-icon>
+          <v-icon>mdi-headphones</v-icon>
         </v-btn>
 
         <v-btn value="titres" @click="navigate('titres')">
@@ -53,7 +53,7 @@
 
         <v-btn value="albums" @click="navigate('albums')">
           <span>Albums</span>
-          <v-icon>mdi-music</v-icon>
+          <v-icon>mdi-disc</v-icon>
         </v-btn>
 
       </v-bottom-navigation>

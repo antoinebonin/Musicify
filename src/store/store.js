@@ -30,6 +30,12 @@ const store = new Vuex.Store({
       addTrack (state, payload) {
         state.pending.push(payload);
       }
+    },
+    actions: {
+      async changeTrack({commit}, idTrack) {
+        await commit('addTrack', idTrack);
+        commit('changeTrack', idTrack);
+      }
     }
   })
 

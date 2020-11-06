@@ -115,7 +115,7 @@ export default {
             this.dialog = true;
         },
         selectTrack() {
-            this.$store.commit('changeTrack', this.selected);
+            this.$store.dispatch('changeTrack', this.selected);
             this.dialog = false;
         },
         addPending() {
