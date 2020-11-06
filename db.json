@@ -1,0 +1,44 @@
+{
+  "tracks": [
+    {
+      "id": 0,
+      "title": "Jungle",
+      "author": "Petit biscuit",
+      "trackUrl": "./tracks/01.mp3",
+      "coverUrl": "https://lesoreillescurieuses.files.wordpress.com/2017/11/305c0689dfabd3120202ed3e5fbc7b13-1000x1000x1.jpg?w=700",
+      "albumId": 1
+    },
+    {
+      "id": 1,
+      "title": "Pick Your Battles",
+      "author": "Petit biscuit & Diplo",
+      "trackUrl": "./tracks/02.mp3",
+      "coverUrl": "https://i0.wp.com/lesoreillescurieuses.com/wp-content/uploads/2020/10/4581DBB9-4C5A-4520-BC4B-278040FB4BBC.jpeg?resize=697%2C697&ssl=1",
+      "albumId": 0
+    },
+    {
+      "id": 2,
+      "title": "Gwana",
+      "author": "Petit biscuit",
+      "trackUrl": "./tracks/03.mp3",
+      "coverUrl": "https://i0.wp.com/lesoreillescurieuses.com/wp-content/uploads/2020/10/4581DBB9-4C5A-4520-BC4B-278040FB4BBC.jpeg?resize=697%2C697&ssl=1",
+      "albumId": 0
+    }
+  ],
+  "albums": [
+    {
+      "id":0,
+      "title": "Parachute",
+      "author": "Petit biscuit",
+      "coverUrl": "https://i0.wp.com/lesoreillescurieuses.com/wp-content/uploads/2020/10/4581DBB9-4C5A-4520-BC4B-278040FB4BBC.jpeg?resize=697%2C697&ssl=1",
+      "color" : "deep-orange lighten-1"
+    },
+    {
+      "id":1,
+      "title": "Présence",
+      "author": "Petit biscuit",
+      "coverUrl": "https://lesoreillescurieuses.files.wordpress.com/2017/11/305c0689dfabd3120202ed3e5fbc7b13-1000x1000x1.jpg?w=700",
+      "color" : "blue lighten-1"
+    }
+  ]
+}
