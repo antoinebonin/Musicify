@@ -14,25 +14,23 @@
     </template>
 
     <div v-if="isLoaded">
-      <v-card-title>Liste des albums :</v-card-title>
+      <v-card-title>Liste des artistes :</v-card-title>
 
       <v-col
-          v-for="(album, i) in albums"
+          v-for="(artist, i) in artists"
           :key="i"
           cols="12"
       >
         <v-card
-            :color="album.color"
+            :color="artist.color"
             dark
         >
           <div class="d-flex flex-no-wrap justify-space-between">
             <div>
               <v-card-title
                   class="headline"
-                  v-text="album.title"
+                  v-text="artist.name"
               ></v-card-title>
-
-              <v-card-subtitle v-text="album.author"></v-card-subtitle>
 
               <v-card-actions>
 
@@ -41,9 +39,9 @@
                     outlined
                     rounded
                     small
-                    @click="seeAlbum(album.id)"
+                    @click="seeArtist(artist.id)"
                 >
-                  Voir l'album
+                  Voir l'artiste
                 </v-btn>
               </v-card-actions>
             </div>
@@ -53,7 +51,7 @@
                 size="125"
                 tile
             >
-              <v-img :src="album.coverUrl"></v-img>
+              <v-img :src="artist.coverUrl"></v-img>
             </v-avatar>
           </div>
         </v-card>
@@ -69,27 +67,27 @@ import axios from "axios";
 const API_ENDPOINT = "http://localhost:3000";
 
 export default {
-  name: 'Album',
+  name: "Artists",
   data: () => ({
-    albums: null,
+    artists: null,
     isLoaded: false,
   }),
   methods: {
-    async fetchTracks() {
-      let response = await axios.get(API_ENDPOINT + '/albums');
-      this.albums = response.data;
+    async fetchArtists() {
+      let response = await axios.get(API_ENDPOINT + '/artists');
+      this.artists = response.data;
       this.isLoaded = true;
     },
-    seeAlbum(id) {
-      this.$router.push('/albums/' + id);
+    seeArtist(id) {
+      this.$router.push('/artists/' + id);
     }
   },
   created() {
-    this.fetchTracks();
+    this.fetchArtists();
   }
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

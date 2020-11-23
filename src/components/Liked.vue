@@ -15,24 +15,24 @@
 
     <v-list
         align="start">
-      <v-subheader>Titres de l'album :</v-subheader>
-      <template v-for="(track, index) in tracks">
+      <v-subheader>Titres favoris</v-subheader>
+      <template v-for="(id, index) in LikedTrack">
 
         <v-divider :key="index"></v-divider>
 
-        <v-list-item :key="track.title" :class="(track.id != currentTrack.id) ? '': 'green accent-1'">
+        <v-list-item :key="tracks[id].title" :class="(tracks[id].id != currentTrack.id) ? '': 'green accent-1'">
 
           <v-list-item-avatar>
-            <v-img :src="track.coverUrl"></v-img>
+            <v-img :src="tracks[id].coverUrl"></v-img>
           </v-list-item-avatar>
 
           <v-list-item-content>
-            <v-list-item-title v-html="track.title"></v-list-item-title>
-            <v-list-item-subtitle v-html="track.author"></v-list-item-subtitle>
+            <v-list-item-title v-html="tracks[id].title"></v-list-item-title>
+            <v-list-item-subtitle v-html="tracks[id].author"></v-list-item-subtitle>
           </v-list-item-content>
 
           <v-list-item-action>
-            <v-btn icon @click="openModal(track.id)">
+            <v-btn icon @click="openModal(tracks[id], index)">
               <v-icon color="grey lighten-1">mdi-dots-horizontal-circle-outline</v-icon>
             </v-btn>
           </v-list-item-action>
@@ -69,12 +69,12 @@
                   <v-list-item-title>Ajouter à la liste de lecture</v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
-              <v-list-item @click="addLiked">
+              <v-list-item @click="deleteLiked">
                 <v-list-item-icon>
                   <v-icon>mdi-heart-circle</v-icon>
                 </v-list-item-icon>
                 <v-list-item-content>
-                  <v-list-item-title>Ajouter à mes titres favoris</v-list-item-title>
+                  <v-list-item-title>Supprimer de mes titres favoris</v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
             </v-list-item-group>
@@ -92,52 +92,47 @@ import axios from "axios";
 const API_ENDPOINT = "http://localhost:3000";
 
 export default {
-  name: 'Album',
+  name: 'Liked',
   data: () => ({
     tracks: null,
-    album: null,
     dialog: false,
     selected: null,
     isLoaded: false,
+    liked_title: []
   }),
   computed: {
     currentTrack() {
       return this.$store.state.track
+    },
+    LikedTrack() {
+      return this.$store.state.liked
     }
   },
   methods: {
-    async fetchAlbum(id) {
-      let response = await axios.get(API_ENDPOINT + '/albums/' + id);
-      this.album = response.data;
-      this.fetchTracks();
-    },
     async fetchTracks() {
-      let albumId = this.album.id;
       let response = await axios.get(API_ENDPOINT + '/tracks');
-      this.tracks = response.data.filter(track => {
-        return track.albumId === albumId;
-      });
+      this.tracks = response.data;
       this.isLoaded = true;
     },
-    openModal(id) {
-      this.selected = id;
+    openModal(track, index) {
+      this.selected = {id: track.id, index: index};
       this.dialog = true;
     },
     selectTrack() {
-      this.$store.dispatch('changeTrack', this.selected);
+      this.$store.dispatch('changeTrack', this.selected.id);
       this.dialog = false;
     },
     addPending() {
-      this.$store.commit('addTrack', this.selected);
+      this.$store.commit('addTrack', this.selected.id);
       this.dialog = false;
     },
-    addLiked() {
-      this.$store.commit('addLikedTrack', this.selected);
+    deleteLiked() {
+      this.$store.commit('deleteLikedTrack', this.selected.index);
       this.dialog = false;
     }
   },
-  created() {
-    this.fetchAlbum(this.$route.params.id);
+  mounted() {
+    this.fetchTracks();
   }
 }
 </script>

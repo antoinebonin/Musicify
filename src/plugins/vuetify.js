@@ -6,13 +6,14 @@ Vue.use(Vuetify);
 
 export default new Vuetify({
     theme: {
-        options: { minifyTheme,
+        options: {
+            minifyTheme,
             themeCache: {
                 get: key => localStorage.getItem(key),
                 set: (key, value) => localStorage.setItem(key, value),
-              },
             },
+        },
         dark: false,
-        
+
     },
 });

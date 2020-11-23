@@ -15,7 +15,7 @@
 
     <v-list
         align="start">
-      <v-subheader>Titres de l'album :</v-subheader>
+      <v-subheader>Titres de l'artiste :</v-subheader>
       <template v-for="(track, index) in tracks">
 
         <v-divider :key="index"></v-divider>
@@ -92,13 +92,11 @@ import axios from "axios";
 const API_ENDPOINT = "http://localhost:3000";
 
 export default {
-  name: 'Album',
+  name: "Artist",
   data: () => ({
     tracks: null,
-    album: null,
-    dialog: false,
-    selected: null,
     isLoaded: false,
+    dialog: false,
   }),
   computed: {
     currentTrack() {
@@ -106,17 +104,10 @@ export default {
     }
   },
   methods: {
-    async fetchAlbum(id) {
-      let response = await axios.get(API_ENDPOINT + '/albums/' + id);
-      this.album = response.data;
-      this.fetchTracks();
-    },
-    async fetchTracks() {
-      let albumId = this.album.id;
-      let response = await axios.get(API_ENDPOINT + '/tracks');
-      this.tracks = response.data.filter(track => {
-        return track.albumId === albumId;
-      });
+    async fetchTracks(id) {
+      let response = await axios.get(API_ENDPOINT + '/tracks?artisetId=' + id);
+      console.log(response.data);
+      this.tracks = response.data;
       this.isLoaded = true;
     },
     openModal(id) {
@@ -137,11 +128,11 @@ export default {
     }
   },
   created() {
-    this.fetchAlbum(this.$route.params.id);
+    this.fetchTracks(this.$route.params.id);
   }
 }
 </script>
 
-<style>
+<style scoped>
 
 </style>

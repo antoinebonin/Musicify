@@ -3,38 +3,45 @@
 
     <v-main>
       <v-container
-      fill-height>
+          fill-height>
         <v-row
-        justify="center" >
+            justify="center">
+          <v-col class="col-sm-11 col-md-10 col-lg-8">
+            <v-card
+                justify="center">
 
-          <v-col
-          sm="8"
-          md="6"
-          lg="4">
-           <Player/>
+              <v-row>
+                <v-col class="py-0 col-sm-12 col-md-6">
+                  <Player/>
+                </v-col>
+
+                <v-divider
+                    vertical
+                    style="margin: 0 -0.5px"
+                ></v-divider>
+
+                <v-col class="py-0 col-sm-12 col-md-6">
+                  <router-view></router-view>
+                </v-col>
+              </v-row>
+
+            </v-card>
           </v-col>
-
-          <v-col
-          sm="8"
-          md="6"
-          lg="4">
-            <router-view></router-view>
-          </v-col>
-
         </v-row>
+
       </v-container>
     </v-main>
 
-    
 
     <v-footer
-    fixed
-    padless>
+        fixed
+        padless>
 
       <v-bottom-navigation
-      grow
-        color="green accent-3"
-        v-model="value">
+
+          shift
+          color="green accent-3"
+          v-model="value">
 
         <v-btn value="home" @click="navigate()">
           <span>Home</span>
@@ -54,6 +61,16 @@
         <v-btn value="albums" @click="navigate('albums')">
           <span>Albums</span>
           <v-icon>mdi-disc</v-icon>
+        </v-btn>
+
+        <v-btn value="artists" @click="navigate('artists')">
+          <span>Artists</span>
+          <v-icon>mdi-account</v-icon>
+        </v-btn>
+
+        <v-btn value="liked" @click="navigate('liked')">
+          <span>Titres favoris</span>
+          <v-icon>mdi-heart</v-icon>
         </v-btn>
 
       </v-bottom-navigation>
