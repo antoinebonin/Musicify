@@ -97,10 +97,6 @@
 </template>
 
 <script>
-import axios from 'axios';
-
-const API_ENDPOINT = "http://localhost:3000";
-
 export default {
   name: "Player",
   data: () => ({
@@ -139,9 +135,10 @@ export default {
     },
     async loadTrack(index) {
       let id = this.pendingList[index];
-      let response = await axios.get(`${API_ENDPOINT}/tracks/${id}`);
+      /*let response = await axios.get(`${API_ENDPOINT}/tracks/${id}`);
+      this.track = response.data;*/
+      this.track = this.db.tracks[id];
       this.index = index;
-      this.track = response.data;
       this.$store.commit('setTrack', this.track);
       this.audio = new Audio(this.track.trackUrl);
       this.audio.volume = 0.3;
@@ -188,6 +185,9 @@ export default {
     },
     pendingList() {
       return this.$store.state.pending;
+    },
+    db() {
+      return this.$store.state.db
     }
   },
   watch: {
@@ -201,13 +201,10 @@ export default {
       this.audio.volume = value;
       if (value === 0) {
         this.volumeIcone = "mdi-volume-off";
-        console.log("off")
       } else if (0 < value <= 0.5) {
         this.volumeIcone = "mdi-volume-medium";
-        console.log("medium")
       } else if (0.5 < value <= 1) {
         this.volumeIcone = "mdi-volume-high";
-        console.log("high")
       }
     }
   },

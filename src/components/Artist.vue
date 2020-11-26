@@ -87,10 +87,6 @@
 </template>
 
 <script>
-import axios from "axios";
-
-const API_ENDPOINT = "http://localhost:3000";
-
 export default {
   name: "Artist",
   data: () => ({
@@ -101,13 +97,19 @@ export default {
   computed: {
     currentTrack() {
       return this.$store.state.track
+    },
+    db() {
+      return this.$store.state.db
     }
   },
   methods: {
     async fetchTracks(id) {
-      let response = await axios.get(API_ENDPOINT + '/tracks?artisetId=' + id);
-      console.log(response.data);
-      this.tracks = response.data;
+      /*let response = await axios.get(API_ENDPOINT + '/tracks?artisetId=' + id);
+      this.tracks = response.data;*/
+      let tracks = this.db.tracks;
+      this.tracks = tracks.filter(track => {
+        return track.artisteId == id;
+      });
       this.isLoaded = true;
     },
     openModal(id) {

@@ -1,6 +1,7 @@
-import Vue from 'vue'
+import Vue from 'vue';
 import Vuex from 'vuex';
-import VuexPersistence from 'vuex-persist'
+import VuexPersistence from 'vuex-persist';
+import db from '../db.json';
 
 Vue.use(Vuex);
 
@@ -18,6 +19,7 @@ const store = new Vuex.Store({
         change: null,
         pending: [0],
         liked: [],
+        db: db
     },
     getters: {
         track: (state) => {

@@ -87,10 +87,6 @@
 </template>
 
 <script>
-import axios from "axios";
-
-const API_ENDPOINT = "http://localhost:3000";
-
 export default {
   name: 'Liked',
   data: () => ({
@@ -106,12 +102,16 @@ export default {
     },
     LikedTrack() {
       return this.$store.state.liked
+    },
+    db() {
+      return this.$store.state.db
     }
   },
   methods: {
     async fetchTracks() {
-      let response = await axios.get(API_ENDPOINT + '/tracks');
-      this.tracks = response.data;
+      /*let response = await axios.get(API_ENDPOINT + '/tracks');
+      this.tracks = response.data;*/
+      this.tracks = this.db.tracks;
       this.isLoaded = true;
     },
     openModal(track, index) {
