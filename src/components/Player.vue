@@ -7,7 +7,7 @@
 
     <template slot="progress">
       <v-progress-circular
-          color="green accent-3"
+          color="deep-orange darken-2"
           size="100"
           width="10"
           indeterminate
@@ -24,22 +24,22 @@
       <v-card-subtitle align=start>{{ this.track.author }}</v-card-subtitle>
 
       <v-item-group tile group>
-        <v-btn fab dark @click="previous" :disabled="index < 1" class="green accent-3">
+        <v-btn fab dark @click="previous" :disabled="index < 1" class="deep-orange darken-2">
           <v-icon>
             mdi-arrow-left
           </v-icon>
         </v-btn>
-        <v-btn x-large fab dark v-show="play" @click="playPause" class="green accent-2">
+        <v-btn x-large fab dark v-show="play" @click="playPause" class="deep-orange darken-2">
           <v-icon x-large>
             mdi-pause
           </v-icon>
         </v-btn>
-        <v-btn x-large fab dark v-show="!play" @click="playPause" class="green accent-2">
+        <v-btn x-large fab dark v-show="!play" @click="playPause" class="deep-orange darken-2">
           <v-icon x-large>
             mdi-play-outline
           </v-icon>
         </v-btn>
-        <v-btn fab dark @click="next" :disabled="pendingList.length === index+1" class="green accent-3">
+        <v-btn fab dark @click="next" :disabled="pendingList.length === index+1" class="deep-orange darken-2">
           <v-icon>
             mdi-arrow-right
           </v-icon>
@@ -49,7 +49,7 @@
       <v-slider
           v-model="this.currentTime"
           :max="(this.audio.duration ? this.audio.duration : 100)"
-          color="green accent-3"
+          color="deep-orange darken-2"
           track-color="grey lighten-2"
           min="0"
           thumb-label="always"
@@ -70,7 +70,7 @@
       >
         <template v-slot:activator>
           <v-btn
-              color="green accent-3"
+              color="deep-orange darken-2"
               dark
               fab
               x-small
@@ -86,8 +86,8 @@
             max="1"
             min="0"
             step="0.1"
-            color="green accent-3"
-            track-color="green accent-2"
+            color="deep-orange darken-2"
+            track-color="deep-orange darken-1"
         ></v-slider>
       </v-speed-dial>
 

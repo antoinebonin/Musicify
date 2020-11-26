@@ -25,7 +25,7 @@
 
         <v-divider :key="index"></v-divider>
 
-        <v-list-item :key="result.title" :class="(result.id != currentTrack.id) ? '': 'green accent-1'">
+        <v-list-item :key="result.title" :class="(result.id != currentTrack.id) ? '': 'deep-orange lighten-3'">
 
           <v-list-item-avatar>
             <v-img :src="result.coverUrl"></v-img>
@@ -85,10 +85,6 @@
 </template>
 
 <script>
-import axios from "axios";
-
-const API_ENDPOINT = "http://localhost:3000";
-
 export default {
   name: "Home",
   data: () => ({
@@ -114,12 +110,19 @@ export default {
   computed: {
     currentTrack() {
       return this.$store.state.track
+    },
+    db(){
+      return this.$store.state.db
     }
   },
   watch: {
     async search(value) {
-      let response = await axios.get(API_ENDPOINT + '/tracks?q=' + value);
-      this.results = response.data;
+      /*let response = await axios.get(API_ENDPOINT + '/tracks?q=' + value);
+      this.results = response.data;*/
+      let tracks = this.db.tracks;
+      this.results = tracks.filter(track => {
+        return track.title.toLowerCase().search(value) === 0;
+      })
     }
   }
 }

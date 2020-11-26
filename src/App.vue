@@ -1,11 +1,21 @@
 <template>
   <v-app>
 
-    <v-main>
-      <v-container
-          fill-height>
+    <v-main class="mb-11">
+      <v-container fill-height>
+
+        <v-row justify="center">
+          <v-col class="col-4">
+            <v-img
+                src="img/banner.png"
+            ></v-img>
+          </v-col>
+        </v-row>
+
         <v-row
-            justify="center">
+            justify="center"
+            align="center">
+
           <v-col class="col-sm-11 col-md-10 col-lg-8">
             <v-card
                 justify="center">
@@ -40,7 +50,7 @@
       <v-bottom-navigation
 
           shift
-          color="green accent-3"
+          color="deep-orange darken-2"
           v-model="value">
 
         <v-btn value="home" @click="navigate()">
@@ -100,7 +110,7 @@ export default {
 
 <style>
 #app {
-  background-color: #74EBD5;
-  background-image: linear-gradient(45deg, #74EBD5 0%, #9FACE6 100%);
+  background: rgb(255,81,54);
+  background: linear-gradient(90deg, rgba(255,81,54,1) 0%, rgba(255,87,34,1) 100%);
 }
 </style>

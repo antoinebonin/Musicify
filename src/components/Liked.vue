@@ -20,7 +20,7 @@
 
         <v-divider :key="index"></v-divider>
 
-        <v-list-item :key="tracks[id].title" :class="(tracks[id].id != currentTrack.id) ? '': 'green accent-1'">
+        <v-list-item :key="tracks[id].title" :class="(tracks[id].id != currentTrack.id) ? '': 'deep-orange lighten-3'">
 
           <v-list-item-avatar>
             <v-img :src="tracks[id].coverUrl"></v-img>

@@ -4,10 +4,10 @@ module.exports = {
   ],
   pwa: {
     name: 'Musicify',
-    themeColor: '#00E676',
-    msTileColor: '#00E676',
+    themeColor: '#ff5136',
+    msTileColor: '#ff5136',
     appleMobileWebAppCapable: 'yes',
-    appleMobileWebAppStatusBarStyle: 'black',
+    appleMobileWebAppStatusBarStyle: 'orange',
 
 
     workboxPluginMode: "InjectManifest",
