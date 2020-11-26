@@ -87,10 +87,6 @@
 </template>
 
 <script>
-import axios from "axios";
-
-const API_ENDPOINT = "http://localhost:3000";
-
 export default {
   name: 'Album',
   data: () => ({
@@ -103,18 +99,26 @@ export default {
   computed: {
     currentTrack() {
       return this.$store.state.track
+    },
+    db() {
+      return this.$store.state.db
     }
   },
   methods: {
     async fetchAlbum(id) {
-      let response = await axios.get(API_ENDPOINT + '/albums/' + id);
-      this.album = response.data;
+      //let response = await axios.get(API_ENDPOINT + '/albums/' + id);
+      //this.album = response.data;
+      this.album = this.db.albums[id];
       this.fetchTracks();
     },
     async fetchTracks() {
       let albumId = this.album.id;
-      let response = await axios.get(API_ENDPOINT + '/tracks');
+      /*let response = await axios.get(API_ENDPOINT + '/tracks');
       this.tracks = response.data.filter(track => {
+        return track.albumId === albumId;
+      });*/
+      let tracks = this.db.tracks;
+      this.tracks = tracks.filter(track => {
         return track.albumId === albumId;
       });
       this.isLoaded = true;

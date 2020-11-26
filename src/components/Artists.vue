@@ -62,20 +62,22 @@
 </template>
 
 <script>
-import axios from "axios";
-
-const API_ENDPOINT = "http://localhost:3000";
-
 export default {
   name: "Artists",
   data: () => ({
     artists: null,
     isLoaded: false,
   }),
+  computed: {
+    db() {
+      return this.$store.state.db
+    }
+  },
   methods: {
     async fetchArtists() {
-      let response = await axios.get(API_ENDPOINT + '/artists');
-      this.artists = response.data;
+      /*let response = await axios.get(API_ENDPOINT + '/artists');
+      this.artists = response.data;*/
+      this.artists = this.db.artists;
       this.isLoaded = true;
     },
     seeArtist(id) {

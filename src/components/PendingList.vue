@@ -31,10 +31,6 @@
 </template>
 
 <script>
-import axios from "axios";
-
-const API_ENDPOINT = "http://localhost:3000";
-
 export default {
   name: 'PendingList',
   data: () => ({
@@ -46,19 +42,28 @@ export default {
     },
     pendingList() {
       return this.$store.state.pending
+    },
+    db() {
+      return this.$store.state.db
     }
   },
   methods: {
     async fetchTracks() {
       let pending = this.pendingList
-      let response = await axios.get(API_ENDPOINT + '/tracks');
+      /*let response = await axios.get(API_ENDPOINT + '/tracks');
       let tracks = response.data.filter(
           function (e) {
             return this.indexOf(e.id) != -1;
           },
           pending
+      );*/
+      let tracks = this.db.tracks;
+      this.tracks = tracks.filter(
+          function (e) {
+            return this.indexOf(e.id) != -1;
+          },
+          pending
       );
-      this.tracks = tracks;
     },
     selectTrack(id) {
       this.$store.commit('changeTrack', id);
