@@ -1,3 +1,5 @@
+const PreloadPlugin = require('@vue/preload-webpack-plugin')
+
 module.exports = {
   "transpileDependencies": [
     "vuetify"
@@ -14,5 +16,15 @@ module.exports = {
     workboxOptions: {
       swSrc: "src/service-worker.js"
     }
+  },
+  chainWebpack: config => {
+    config.plugins.delete('prefetch')
+
+    config
+        .plugin('preload')
+        .use(PreloadPlugin, [{
+          rel: 'preload',
+          include: 'asyncChunks'
+        }])
   }
 }

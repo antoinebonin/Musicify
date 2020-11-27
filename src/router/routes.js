@@ -7,7 +7,7 @@ const routes = [
     {
         path: "/",
         name: "Home",
-        component: () => import("../components/Home"),
+        component: () => import(/* webpackChunkName: "home" */"../components/Home"),
         meta: {
             value: "home"
         }
@@ -15,7 +15,7 @@ const routes = [
     {
         path: '/pending',
         name: "PendingList",
-        component: () => import("../components/PendingList"),
+        component: () => import(/* webpackChunkName: "pendinglist" */"../components/PendingList"),
         meta: {
             value: "pendingList"
         }
@@ -23,7 +23,7 @@ const routes = [
     {
         path: '/titres',
         name: "Titres",
-        component: () => import("../components/Titres"),
+        component: () => import(/* webpackChunkName: "titres" */"../components/Titres"),
         meta: {
             value: "titres"
         }
@@ -31,7 +31,7 @@ const routes = [
     {
         path: '/albums',
         name: "Albums",
-        component: () => import("../components/Albums"),
+        component: () => import(/* webpackChunkName: "albums" */"../components/Albums"),
         meta: {
             value: "albums"
         }
@@ -39,7 +39,7 @@ const routes = [
     {
         path: '/albums/:id',
         name: "Album",
-        component: () => import("../components/Album"),
+        component: () => import(/* webpackChunkName: "album" */"../components/Album"),
         meta: {
             value: "albums"
         }
@@ -47,7 +47,7 @@ const routes = [
     {
         path: '/artists',
         name: "Artists",
-        component: () => import("../components/Artists"),
+        component: () => import(/* webpackChunkName: "artists" */"../components/Artists"),
         meta: {
             value: "artists"
         }
@@ -55,7 +55,7 @@ const routes = [
     {
         path: '/artists/:id',
         name: "Artist",
-        component: () => import("../components/Artist"),
+        component: () => import(/* webpackChunkName: "artist" */"../components/Artist"),
         meta: {
             value: "artists"
         }
@@ -63,7 +63,7 @@ const routes = [
     {
         path: '/liked',
         name: "Liked",
-        component: () => import("../components/Liked"),
+        component: () => import(/* webpackChunkName: "liked" */"../components/Liked"),
         meta: {
             value: "liked"
         }
