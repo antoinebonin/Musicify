@@ -48,37 +48,36 @@
         padless>
 
       <v-bottom-navigation
-
           shift
           color="deep-orange darken-2"
           v-model="value">
 
-        <v-btn value="home" @click="navigate()">
+        <v-btn value="home" @click="navigate()" class="px-0">
           <span>Home</span>
           <v-icon>mdi-home</v-icon>
         </v-btn>
 
-        <v-btn value="pendingList" @click="navigate('pending')">
+        <v-btn value="pendingList" @click="navigate('pending')" class="px-0">
           <span>Liste de lecture</span>
           <v-icon>mdi-headphones</v-icon>
         </v-btn>
 
-        <v-btn value="titres" @click="navigate('titres')">
+        <v-btn value="titres" @click="navigate('titres')" class="px-0">
           <span>Titres</span>
           <v-icon>mdi-music</v-icon>
         </v-btn>
 
-        <v-btn value="albums" @click="navigate('albums')">
+        <v-btn value="albums" @click="navigate('albums')" class="px-0">
           <span>Albums</span>
           <v-icon>mdi-disc</v-icon>
         </v-btn>
 
-        <v-btn value="artists" @click="navigate('artists')">
+        <v-btn value="artists" @click="navigate('artists')" class="px-0">
           <span>Artists</span>
           <v-icon>mdi-account</v-icon>
         </v-btn>
 
-        <v-btn value="liked" @click="navigate('liked')">
+        <v-btn value="liked" @click="navigate('liked')" class="px-0">
           <span>Titres favoris</span>
           <v-icon>mdi-heart</v-icon>
         </v-btn>
